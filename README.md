@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Portfólio — Isaac Rodrigues de Medeiros
 
 Este é o meu portfólio pessoal, criado para apresentar um pouco sobre mim, minhas habilidades, meus projetos e meus conhecimentos na área de tecnologia.
@@ -35,3 +36,7 @@ O layout foi desenvolvido para se adaptar a diferentes tamanhos de tela, incluin
 Também conhecido como **Isaac Gesiman**.
 
 - GitHub: [isaac-gesiman](https://github.com/isaac-gesiman)
+=======
+# Meu-portifolio
+Esse repositório guarda o meu portifólio 
+>>>>>>> b69bcdb3c4d9beac60e8e025e455f29af370299b

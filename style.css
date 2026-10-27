@@ -402,6 +402,46 @@ a:hover {
   box-shadow: var(--shadow-sm);
 }
 
+/* Tech Categories */
+.tech-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tech-category {
+  margin-bottom: 1rem;
+}
+
+.tech-category:last-child {
+  margin-bottom: 0;
+}
+
+.tech-category h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tech-category .skill-tags {
+  margin-top: 0.5rem;
+}
+
+.tech-category .skill-tag {
+  background: var(--bg-accent);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.tech-category .skill-tag:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
 /* =============================================
    Projects Section
    ============================================= */

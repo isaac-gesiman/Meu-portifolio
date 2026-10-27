@@ -1,44 +1,37 @@
-# 🔗 Abrir Link em Várias Páginas
+# Portfólio — Isaac Rodrigues de Medeiros
 
-Ferramenta web para abrir um mesmo link em até **100 páginas simultâneas**, exibidas em um grid responsivo. Ideal para visualizar múltiplas instâncias de um site ao mesmo tempo, seja para testes, monitoramento ou automação visual.
+Este é o meu portfólio pessoal, criado para apresentar um pouco sobre mim, minhas habilidades, meus projetos e meus conhecimentos na área de tecnologia.
 
-## ✨ Funcionalidades
+Meu nome é **Isaac Rodrigues de Medeiros**. Também utilizo o nome **Isaac Gesiman** como apelido e identidade na internet. Por isso, esse apelido aparece em algumas partes do site e nos meus perfis online.
 
-- 📊 **Grid responsivo** — abre até 100 iframes do mesmo link em um único layout
-- 🎬 **Suporte a embeds** — detecta automaticamente links do **YouTube** e **TikTok** e os converte para versões embed
-- 🌐 **Abrir em abas** — alternativa para sites que bloqueiam exibição em iframes
-- 🌙 **Dark mode** — suporte automático baseado na preferência do sistema
-- 📱 **Totalmente responsivo** — funciona em desktop, tablet e mobile
-- 🔒 **Sandbox de segurança** — iframes rodam com permissões controladas
-- ⚡ **Sem dependências** — HTML, CSS e JavaScript puro, sem build
+## Sobre o site
 
-## 🚀 Como usar
+O site funciona como uma apresentação profissional e está dividido nas seguintes seções:
 
-1. Abra o arquivo `index.html` em qualquer navegador moderno
-2. Cole o link que deseja abrir no campo de texto
-3. Defina a quantidade de páginas (de 1 a 100)
-4. Clique em **Abrir**
+- **Início:** apresenta meu nome, minha foto e minha área de atuação.
+- **Sobre:** contém informações sobre meu foco profissional, minhas principais habilidades e meus objetivos.
+- **Projetos:** apresenta alguns dos projetos que já desenvolvi e as tecnologias utilizadas em cada um.
+- **Habilidades:** mostra meus conhecimentos adicionais, serviços técnicos e cursos realizados.
+- **Contato:** reúne formas de entrar em contato comigo, incluindo GitHub, e-mail e telefone.
 
-> **Dica:** Se aparecer "conexão recusada", o site não permite ser exibido em janelas. Use o botão **"Abrir em abas"** para abrir cada página em uma aba separada do navegador.
+Os botões do menu superior levam diretamente para cada seção da página por meio de uma animação de rolagem rápida e suave.
 
-## 🎯 Casos de uso
+## Tecnologias utilizadas
 
-- 📈 Monitorar múltiplas páginas ao mesmo tempo
-- 🧪 Testar layout em diferentes instâncias
-- 🎬 Visualizar vários vídeos lado a lado
-- 🔄 Comparar conteúdo em tempo real
+O portfólio foi desenvolvido com:
 
-## 🛠️ Tecnologias
+- **HTML5:** estrutura e conteúdo do site.
+- **CSS3:** aparência, responsividade, cores e organização dos elementos.
+- **JavaScript:** interações e funcionamento da navegação.
+- **GSAP:** animações dos textos, cards e rolagem entre as seções.
 
-- **HTML5** semântico
-- **CSS3** com variáveis, grid layout e animações
-- **JavaScript** vanilla (sem frameworks)
+## Responsividade
 
-## 📋 Requisitos
+O layout foi desenvolvido para se adaptar a diferentes tamanhos de tela, incluindo computadores, tablets e celulares.
 
-- Navegador moderno com suporte a iframes
-- Liberação de pop-ups (para a função "Abrir em abas")
+## Autor
 
-## 📄 Licença
+**Isaac Rodrigues de Medeiros**  
+Também conhecido como **Isaac Gesiman**.
 
-Projeto de uso livre. Sinta-se à vontade para modificar e distribuir.
+- GitHub: [isaac-gesiman](https://github.com/isaac-gesiman)

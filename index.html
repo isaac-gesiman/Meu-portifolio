@@ -1,561 +1,242 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Abrir link em várias páginas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #f8fafc;
-  --fg: #1e293b;
-  --bar: #94a3b8;
-  --cell: #000;
-  --line: #e2e8f0;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --card-bg: #ffffff;
-  --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 60px -15px rgba(0, 0, 0, 0.15);
-  --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --radius: 16px;
-  --radius-lg: 24px;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px)
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f172a;
-    --fg: #f1f5f9;
-    --bar: #475569;
-    --line: #334155;
-    --card-bg: #1e293b;
-    --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 20px 60px -15px rgba(0, 0, 0, 0.6)
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #0f172a;
-  --fg: #f1f5f9;
-  --bar: #475569;
-  --line: #334155;
-  --card-bg: #1e293b;
-  --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 20px 60px -15px rgba(0, 0, 0, 0.6)
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0
-}
-
-html {
-  scroll-padding-top: env(safe-area-inset-top, 0px)
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-  line-height: 1.6;
-  min-height: 100vh;
-  overflow-x: hidden
-}
-
-[hidden] {
-  display: none !important
-}
-
-/* Home Section */
-.home {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 80px 24px;
-  text-align: center;
-  animation: fadeIn 0.6s ease-out
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px)
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0)
-  }
-}
-
-/* Card Principal */
-.card {
-  display: inline-block;
-  background: var(--gradient);
-  color: #fff;
-  border-radius: var(--radius-lg);
-  padding: 48px 56px;
-  font-size: clamp(20px, 5vw, 28px);
-  font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: 40px;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  overflow: hidden
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  animation: shimmer 3s infinite
-}
-
-@keyframes shimmer {
-  0%, 100% {
-    transform: translate(0, 0)
-  }
-  50% {
-    transform: translate(-25%, -25%)
-  }
-}
-
-/* Formulário */
-form {
-  background: var(--card-bg);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--line);
-  transition: transform 0.3s ease, box-shadow 0.3s ease
-}
-
-form:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg)
-}
-
-/* Input Principal */
-.link {
-  width: 100%;
-  border: 2px solid var(--line);
-  background: var(--bg);
-  color: var(--fg);
-  font-family: inherit;
-  font-size: 16px;
-  text-align: center;
-  padding: 18px 20px;
-  border-radius: var(--radius);
-  transition: all 0.3s ease
-}
-
-.link::placeholder {
-  color: var(--bar);
-  opacity: 1
-}
-
-.link:hover {
-  border-color: var(--accent)
-}
-
-.link:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1)
-}
-
-/* Linha de Controles */
-.row {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 24px;
-  flex-wrap: wrap
-}
-
-label {
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--bar)
-}
-
-/* Quantidade */
-.qtd {
-  width: 90px;
-  border: 2px solid var(--line);
-  background: var(--bg);
-  color: var(--fg);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 12px;
-  text-align: center;
-  border-radius: var(--radius);
-  transition: all 0.3s ease
-}
-
-.qtd:hover {
-  border-color: var(--accent)
-}
-
-.qtd:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1)
-}
-
-/* Botões */
-.btn {
-  border: none;
-  background: var(--accent);
-  color: #fff;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 13px 32px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease
-}
-
-.btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px -8px rgba(99, 102, 241, 0.5)
-}
-
-.btn:hover::before {
-  width: 300px;
-  height: 300px
-}
-
-.btn:active {
-  transform: translateY(0)
-}
-
-.btn.alt {
-  background: transparent;
-  color: var(--fg);
-  border: 2px solid var(--line);
-  font-weight: 500
-}
-
-.btn.alt:hover {
-  background: var(--bg);
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: none
-}
-
-.btn:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px
-}
-
-/* Mensagem de Erro */
-.err {
-  min-height: 24px;
-  margin-top: 16px;
-  color: #ef4444;
-  font-size: 14px;
-  font-weight: 500;
-  animation: shake 0.5s ease
-}
-
-@keyframes shake {
-  0%, 100% {
-    transform: translateX(0)
-  }
-  25% {
-    transform: translateX(-5px)
-  }
-  75% {
-    transform: translateX(5px)
-  }
-}
-
-/* View Section */
-#view {
-  animation: fadeIn 0.4s ease-out
-}
-
-/* Barra de Controles */
-.bar {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 20px 24px;
-  font-size: 14px;
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--line)
-}
-
-.bar .info {
-  flex: 1;
-  min-width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 500;
-  color: var(--bar)
-}
-
-.bar .btn {
-  padding: 10px 20px;
-  font-size: 14px
-}
-
-/* Mensagem de Ajuda */
-.bar + p.bar {
-  padding-top: 0;
-  background: transparent;
-  border: none;
-  opacity: 0.75;
-  font-size: 13px;
-  color: var(--bar);
-  padding: 12px 24px
-}
-
-/* Grid de Páginas */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 12px;
-  padding: 24px;
-  background: var(--bg)
-}
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(6, 1fr)
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr)
-  }
-}
-
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    padding: 16px
-  }
-
-  .home {
-    padding: 40px 16px
-  }
-
-  .card {
-    padding: 32px 24px
-  }
-
-  form {
-    padding: 24px 20px
-  }
-}
-
-/* Células do Grid */
-.cell {
-  background: var(--cell);
-  aspect-ratio: 2 / 1;
-  overflow: hidden;
-  position: relative;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease
-}
-
-.cell:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
-  z-index: 1
-}
-
-.cell iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1280px;
-  height: 640px;
-  border: 0;
-  background: #fff;
-  transform: scale(var(--s, .1));
-  transform-origin: 0 0
-}
-
-/* Animação de Loading */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1
-  }
-  50% {
-    opacity: 0.5
-  }
-}
-
-.loading .cell::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--bar);
-  animation: pulse 1.5s infinite;
-  z-index: 1
-}
-
-/* Scrollbar Personalizada */
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg)
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--bar);
-  border-radius: 6px;
-  border: 3px solid var(--bg)
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent)
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <title>Isaac Gesiman | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-<main class="home" id="home">
-  <div class="card">
-    <span style="position:relative;z-index:1">coloque o Link para<br>abrir ele em<br>até 100 páginas</span>
-  </div>
-  <form id="f" autocomplete="off" novalidate>
-    <input class="link" id="link" type="text" inputmode="url" placeholder="Ex: https://....." aria-label="Link">
-    <div class="row">
-      <label for="qtd">Páginas</label>
-      <input class="qtd" id="qtd" type="number" min="1" max="100" value="72">
-      <button class="btn" type="submit">Abrir</button>
+
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-text">IG</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
     </div>
-    <div class="err" id="err" role="alert"></div>
-  </form>
-</main>
+  </nav>
 
-<section id="view" hidden>
-  <div class="bar">
-    <button class="btn alt" id="back" type="button">← Voltar</button>
-    <span class="info" id="info"></span>
-    <button class="btn alt" id="tabs" type="button" title="Abre cada página em uma aba do navegador (libere pop-ups)">Abrir em abas</button>
-  </div>
-  <p class="bar" style="padding-top:0;opacity:.8">Se aparecer "conexão recusada", o site não permite ser exibido em janelas. Use "Abrir em abas".</p>
-  <div class="grid" id="grid"></div>
-</section>
+  <section id="home" class="hero section">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-image fade-in">
+          <img src="https://avatars.githubusercontent.com/u/187703262?s=400&v=4" alt="Isaac Gesiman">
+        </div>
+        <h1 id="hero-title"></h1>
+        <p class="subtitle" id="hero-subtitle"></p>
+        <div class="hero-cta fade-in">
+          <a href="#projects" class="btn-primary">
+            <span>Ver Projetos</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-var $ = function(id) {
-  return document.getElementById(id)
-};
-var url = "", count = 0;
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Sobre Mim</h2>
+      <div class="about-grid">
+        <div class="card fade-in">
+          <h3>🎯 Foco</h3>
+          <p>Desenvolvedor apaixonado por tecnologia e inovação, sempre buscando soluções criativas para problemas complexos. Meu foco está em criar experiências digitais que sejam tanto funcionais quanto esteticamente agradáveis.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>💻 Habilidades</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Frontend</span>
+            <span class="skill-tag">Web Development</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Responsive Design</span>
+            <span class="skill-tag">UI/UX</span>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <h3>🚀 Objetivos</h3>
+          <p>Busco constantemente aprender novas tecnologias e metodologias para expandir meu conhecimento e entregar projetos cada vez mais robustos e inovadores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-function norm(v) {
-  v = v.trim();
-  if (!v) return null;
-  if (!/^https?:\/\//i.test(v)) v = "https://" + v;
-  try {
-    var u = new URL(v);
-    return /^https?:$/.test(u.protocol) ? u.href : null
-  } catch (e) {
-    return null
-  }
-}
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">Meus Projetos</h2>
+      <div class="projects-grid">
+        <div class="card project-card fade-in">
+          <h3>Lista Compartilhada</h3>
+          <p>Repositório do site lista compartilhada parte do front end - sistema para gerenciar e compartilhar listas de forma colaborativa.</p>
+          <div class="project-tech">
+            <span>JavaScript</span>
+            <span>Frontend</span>
+          </div>
+        </div>
 
-function embedUrl(u) {
-  var m = u.match(/^https?:\/\/(?:www\.|m\.)?tiktok\.com\/@[^\/]+\/video\/(\d+)/i);
-  if (m) return "https://www.tiktok.com/embed/v2/" + m[1];
-  var y = u.match(/^https?:\/\/(?:(?:www\.|m\.)?youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|live\/|embed\/)|youtu\.be\/)([\w-]{11})/i);
-  return y ? "https://www.youtube.com/embed/" + y[1] : u;
-}
+        <div class="card project-card fade-in">
+          <h3>Site da Igreja Landing Page</h3>
+          <p>Site institucional para Igreja Batista Getsemani com informações sobre história da igreja, horários de cultos e informações da comunidade.</p>
+          <div class="project-tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Landing Page</span>
+          </div>
+        </div>
 
-function scale() {
-  var c = document.querySelector(".cell");
-  if (!c) return;
-  $("grid").style.setProperty("--s", (c.clientWidth / 1280).toFixed(4));
-}
+        <div class="card project-card fade-in">
+          <h3>Projeto Biblioteca Municipal</h3>
+          <p>Sistema para biblioteca municipal com catálogo digital e gerenciamento de acervo.</p>
+          <div class="project-tech">
+            <span>HTML</span>
+            <span>JavaScript</span>
+            <span>Sistema Web</span>
+          </div>
+        </div>
 
-function build() {
-  var g = $("grid");
-  g.textContent = "";
-  for (var i = 0; i < count; i++) {
-    var c = document.createElement("div");
-    c.className = "cell";
-    var f = document.createElement("iframe");
-    f.src = embedUrl(url);
-    f.title = "Página " + (i + 1);
-    f.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms allow-popups allow-presentation allow-popups-to-escape-sandbox");
-    f.setAttribute("allow", "encrypted-media; fullscreen; picture-in-picture; autoplay");
-    f.referrerPolicy = "strict-origin-when-cross-origin";
-    c.appendChild(f);
-    g.appendChild(c);
-  }
-  $("info").textContent = count + " páginas • " + url;
-  $("home").hidden = true;
-  $("view").hidden = false;
-  scale();
-  window.scrollTo(0, 0);
-}
+        <div class="card project-card fade-in">
+          <h3>Reconhecimento de Movimentos Faciais</h3>
+          <p>Sistema em Python para detecção de movimentos faciais, piscar de olhos e reconhecimento de fala, inspirado no tracking de avatares do Roblox.</p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>Visão Computacional</span>
+            <span>AI</span>
+          </div>
+        </div>
 
-$("f").addEventListener("submit", function(e) {
-  e.preventDefault();
-  var u = norm($("link").value);
-  var n = Math.min(100, Math.max(1, parseInt($("qtd").value, 10) || 72));
-  if (!u) {
-    $("err").textContent = "Link inválido. Exemplo: https://exemplo.com";
-    return
-  }
-  $("err").textContent = "";
-  url = u;
-  count = n;
-  build();
-});
+        <div class="card project-card fade-in">
+          <h3>Abrir 100 Abas com 1 Link</h3>
+          <p>Projeto feito para conseguir abrir o mesmo site 100x ao mesmo tempo - ferramenta para testes de performance e carga.</p>
+          <div class="project-tech">
+            <span>HTML</span>
+            <span>JavaScript</span>
+            <span>Performance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-$("back").addEventListener("click", function() {
-  $("grid").textContent = "";
-  $("view").hidden = true;
-  $("home").hidden = false;
-});
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Habilidades Extras</h2>
 
-$("tabs").addEventListener("click", function() {
-  for (var i = 0; i < count; i++) window.open(url, "_blank", "noopener");
-});
+      <div class="extra-section fade-in">
+        <div class="extra-card">
+          <h3>🛠️ Serviços Técnicos</h3>
+          <ul class="extra-list">
+            <li>Montagem e manutenção de desktop e laptop</li>
+            <li>Configuração de hardware e periféricos</li>
+            <li>Diagnóstico e resolução de problemas técnicos</li>
+          </ul>
+        </div>
 
-window.addEventListener("resize", scale);
-</script>
+        <div class="extra-card">
+          <h3>🤖 Conhecimento em IA</h3>
+          <ul class="extra-list">
+            <li>Machine Learning básico</li>
+            <li>Visão computacional</li>
+            <li>Reconhecimento de padrões</li>
+            <li>Processamento de linguagem natural</li>
+          </ul>
+        </div>
+
+        <div class="extra-card">
+          <h3>📚 Cursos</h3>
+          <ul class="course-list">
+            <li>
+              <span class="course-name">Claude Code do Zero ao Avançado: MCP, Skills, Hooks e Rules</span>
+              <span class="course-platform">— Udemy (2026)</span>
+            </li>
+            <li>
+              <span class="course-name">React</span>
+              <span class="course-platform">— Mimo (2026)</span>
+            </li>
+            <li>
+              <span class="course-name">Front-End Development</span>
+              <span class="course-platform">— Mimo (2026)</span>
+            </li>
+            <li>
+              <span class="course-name">Computer Hardware Basics</span>
+              <span class="course-platform">— Cisco (2025)</span>
+            </li>
+            <li>
+              <span class="course-name">Informática Essencial</span>
+              <span class="course-platform">— Microlins (2019)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">Entre em Contato</h2>
+      <p class="contact-intro fade-in">Estou sempre aberto a novas oportunidades e colaborações. Vamos conversar sobre como posso ajudar no seu próximo projeto!</p>
+
+      <div class="contact-links">
+        <a href="https://github.com/isaac-gesiman" target="_blank" class="contact-link fade-in">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <a href="mailto:isaac.gesiman@email.com" class="contact-link fade-in">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <span>Email</span>
+        </a>
+
+        <a href="tel:+5584997084078" class="contact-link fade-in">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          <span>(84) 99708-4078</span>
+        </a>
+
+        <button class="contact-link fade-in" onclick="copyContactInfo()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+          </svg>
+          <span>Copiar Contato</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Isaac Roodrigues de Medeiros. Todos os direitos reservados.</p>
+      <p class="footer-credit">Desenvolvido com ❤️ e animações GSAP</p>
+    </div>
+  </footer>
+
+  <!-- GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
 </body>
 </html>

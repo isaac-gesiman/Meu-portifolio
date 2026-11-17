@@ -3,10 +3,10 @@
    ============================================= */
 :root {
   /* Color palette - Dark Theme (default) */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-accent: #334155;
-  --bg-card: rgba(30, 41, 59, 0.8);
+  --bg-primary: #0b1315;
+  --bg-secondary: #101c1f;
+  --bg-accent: #1d2f33;
+  --bg-card: rgba(16, 28, 31, 0.8);
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -222,7 +222,7 @@ a:hover {
   right: 0;
   z-index: 1000;
   padding: 1rem 2rem;
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(11, 19, 21, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -295,10 +295,12 @@ a:hover {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 70%);
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
   pointer-events: none;
 }
 
@@ -682,3 +684,41 @@ a:hover {
     scroll-behavior: auto;
   }
 }
+/* Fundo: textura de grão fina (sem brilhos em degradê) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.section-alt { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+/* Cards de projeto clicáveis */
+.project-card { position: relative; cursor: pointer; }
+.card-link { color: inherit; }
+.card-link::after { content: ''; position: absolute; inset: 0; border-radius: var(--card-radius); }
+.card-link:focus-visible { outline: none; }
+.card-link:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 3px; }
+.project-card .project-tech::after { content: 'Ver detalhes'; margin-left: auto; align-self: center; color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+
+/* Páginas de projeto */
+.proj-hero { min-height: 82vh; }
+.proj-hero h1 { font-size: clamp(2rem, 5vw, 3.75rem); max-width: 18ch; margin-left: auto; margin-right: auto; }
+.proj-hero .project-tech { justify-content: center; border: 0; margin-top: 0; padding-top: 0; margin-bottom: 2rem; }
+.proj-hero .project-tech::after { content: none; }
+.proj-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.btn-secondary { display: inline-flex; align-items: center; padding: 1rem 2rem; border-radius: 50px; font-weight: 600; border: 1px solid var(--border-light); color: var(--text-primary); transition: border-color 0.3s ease, color 0.3s ease; }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.proj-section { padding: clamp(4rem, 12vh, 8rem) 0; }
+.reveal-block { max-width: 34em; margin: 0 auto; }
+.reveal-text { font-family: var(--font-display); font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.55; color: var(--text-primary); margin-bottom: 2rem; }
+.reveal-list { margin: 0 0 2rem; }
+.reveal-list li { font-size: 1.1rem; padding-top: 0.75rem; padding-bottom: 0.75rem; color: var(--text-primary); }
+.steps { list-style: none; counter-reset: passo; }
+.steps li { position: relative; padding-left: 2.5rem; counter-increment: passo; }
+.steps li::before { content: counter(passo); position: absolute; left: 0; color: var(--accent); font-family: var(--font-mono); }
+.proj-back { text-align: center; }

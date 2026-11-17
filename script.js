@@ -276,7 +276,7 @@
 
     // Navbar blur effect on scroll
     gsap.to('.navbar', {
-      backgroundColor: 'rgba(15, 23, 42, 0.98)',
+      backgroundColor: 'rgba(11, 19, 21, 0.98)',
       backdropFilter: 'blur(16px)',
       scrollTrigger: {
         trigger: 'body',
@@ -322,7 +322,7 @@
     const contactInfo = `Isaac Gesiman
 
 GitHub: https://github.com/isaac-gesiman
-Email: isaac.gesiman@email.com
+Email: isaac.rodmed@gmail.com
 Telefone: (84) 99708-4078`;
 
     navigator.clipboard.writeText(contactInfo).then(() => {

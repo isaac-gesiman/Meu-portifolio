@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Compartilhada | Isaac Gesiman</title>
+  <meta name="description" content="Listas compartilhadas e sincronizadas em tempo real com Firebase e Firestore.">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <noscript><style>.reveal-block,.reveal-text,.reveal-item,.section-title{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <nav class="navbar"><div class="container"><a class="logo" href="../index.html"><span class="logo-text">IG</span></a><ul class="nav-links"><li><a href="../index.html#home">Início</a></li><li><a href="../index.html#about">Sobre</a></li><li><a href="../index.html#projects">Projetos</a></li><li><a href="../index.html#skills">Habilidades</a></li><li><a href="../index.html#contact">Contato</a></li></ul></div></nav>
+
+  <header class="hero section proj-hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
+    <h1 id="proj-title">Lista Compartilhada</h1>
+    <p class="subtitle proj-fade">Várias pessoas, a mesma lista, sincronizada em tempo real.</p>
+    <div class="project-tech proj-fade"><span>JavaScript</span><span>Firebase</span><span>Firestore</span><span>Tempo real</span></div>
+    <div class="proj-actions proj-fade"><a href="#objetivo" class="btn-primary"><span>Ler sobre o projeto</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a href="https://github.com/isaac-gesiman/Lista-Compartilhada" target="_blank" rel="noopener" class="btn-secondary">Ver no GitHub</a></div>
+  </div></div></header>
+
+  <section id="objetivo" class="section proj-section"><div class="container">
+    <h2 class="section-title">Objetivo</h2>
+    <div class="reveal-block"><p class="reveal-text">Permitir que várias pessoas criem e editem a mesma lista (de compras ou tarefas) com todos os dispositivos sincronizados em tempo real. O projeto resolve a limitação de listas guardadas só no navegador de um usuário.</p></div>
+  </div></section>
+
+  <section id="sobre-projeto" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Sobre</h2>
+    <div class="reveal-block"><p class="reveal-text">Projeto avaliativo A3 de Sistemas Distribuídos e Mobile na UnP, feito em grupo de três pessoas. O front-end é feito em HTML, CSS e JavaScript puro com módulos ES, usando o Firebase como backend (BaaS). O README é um relatório técnico completo, com arquitetura, modelo de dados, segurança e os problemas que a equipe enfrentou.</p></div>
+  </div></section>
+
+  <section id="como-funciona" class="section proj-section"><div class="container">
+    <h2 class="section-title">Como funciona</h2>
+    <div class="reveal-block">
+      <p class="reveal-text">O usuário se cadastra ou entra com e-mail e senha ou com a conta Google, e cai no painel com suas listas. Cada lista é um documento no Cloud Firestore, com os itens e os e-mails de quem tem acesso guardados dentro dele.</p>
+      <ul class="extra-list reveal-list">
+        <li class="reveal-item">Quando alguém altera algo, o onSnapshot atualiza a tela de todos os clientes conectados.</li>
+        <li class="reveal-item">As regras de segurança do Firestore permitem que só o dono edite e que os e-mails compartilhados apenas leiam.</li>
+        <li class="reveal-item">As páginas internas redirecionam para o login se não houver sessão.</li>
+        <li class="reveal-item">O nome da lista é salvo com debounce de 600 ms, para não gravar a cada tecla.</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section id="habilidades" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Habilidades demonstradas</h2>
+    <div class="reveal-block"><ul class="extra-list reveal-list">
+      <li class="reveal-item">Integração com Firebase Authentication (e-mail/senha e OAuth com Google) e Firestore.</li>
+      <li class="reveal-item">Comunicação em tempo real com listeners reativos.</li>
+      <li class="reveal-item">Modelagem de dados NoSQL e regras de segurança no servidor.</li>
+      <li class="reveal-item">Proteção de rotas.</li>
+      <li class="reveal-item">JavaScript moderno com módulos, debounce e tratamento de condições de corrida.</li>
+      <li class="reveal-item">CSS responsivo com variáveis (design tokens).</li>
+      <li class="reveal-item">Documentação técnica e trabalho em equipe.</li>
+    </ul></div>
+  </div></section>
+
+  <section class="section"><div class="container proj-back"><a href="../index.html#projects" class="btn-primary"><span>Voltar aos projetos</span></a></div></section>
+  <footer class="footer"><div class="container"><p>© 2026 Isaac Rodrigues de Medeiros. Todos os direitos reservados.</p><p class="footer-credit">Desenvolvido com ❤️ e animações GSAP</p></div></footer>
+
+  <script src="../vendor/gsap.min.js"></script>
+  <script>window.gsap || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollTrigger.min.js"></script>
+  <script>window.ScrollTrigger || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollToPlugin.min.js"></script>
+  <script>window.ScrollToPlugin || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"><\/script>');</script>
+  <script src="../projeto.js"></script>
+</body>
+</html>

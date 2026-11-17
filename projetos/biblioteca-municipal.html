@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Biblioteca Municipal | Isaac Gesiman</title>
+  <meta name="description" content="Sistema web para gestão de livros, leitores, empréstimos, devoluções e multas de uma biblioteca pública.">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <noscript><style>.reveal-block,.reveal-text,.reveal-item,.section-title{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <nav class="navbar"><div class="container"><a class="logo" href="../index.html"><span class="logo-text">IG</span></a><ul class="nav-links"><li><a href="../index.html#home">Início</a></li><li><a href="../index.html#about">Sobre</a></li><li><a href="../index.html#projects">Projetos</a></li><li><a href="../index.html#skills">Habilidades</a></li><li><a href="../index.html#contact">Contato</a></li></ul></div></nav>
+
+  <header class="hero section proj-hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
+    <h1 id="proj-title">Projeto Biblioteca Municipal</h1>
+    <p class="subtitle proj-fade">Empréstimos, devoluções e multas de uma biblioteca pública.</p>
+    <div class="project-tech proj-fade"><span>Ruby on Rails</span><span>PostgreSQL</span><span>Railway</span><span>GitHub Actions</span></div>
+    <div class="proj-actions proj-fade"><a href="#objetivo" class="btn-primary"><span>Ler sobre o projeto</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a href="https://github.com/isaac-gesiman/projeto-biblioteca-municipal" target="_blank" rel="noopener" class="btn-secondary">Ver no GitHub</a></div>
+  </div></div></header>
+
+  <section id="objetivo" class="section proj-section"><div class="container">
+    <h2 class="section-title">Objetivo</h2>
+    <div class="reveal-block"><p class="reveal-text">Digitalizar a gestão de uma biblioteca pública, controlando livros, leitores, empréstimos e devoluções, com acesso separado para bibliotecários e leitores.</p></div>
+  </div></section>
+
+  <section id="sobre-projeto" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Sobre</h2>
+    <div class="reveal-block"><p class="reveal-text">Sistema web feito com Ruby on Rails 8 e PostgreSQL, publicado na plataforma Railway. É o projeto mais completo da sua conta, com regras de negócio, e-mails automáticos, testes e integração contínua.</p></div>
+  </div></section>
+
+  <section id="como-funciona" class="section proj-section"><div class="container">
+    <h2 class="section-title">Como funciona</h2>
+    <div class="reveal-block">
+      <p class="reveal-text">O bibliotecário cadastra usuários, outros bibliotecários, livros e categorias, e registra empréstimos e devoluções. O leitor tem uma área própria para ver seus empréstimos, a data de devolução e o status, e para renovar.</p>
+      <p class="reveal-text">As senhas usam has_secure_password (bcrypt). Quem é cadastrado recebe uma senha provisória por e-mail e precisa criar a definitiva no primeiro acesso. Cada leitor também tem uma senha de empréstimo de 8 dígitos, usada para confirmar cada retirada. O sistema aplica várias regras:</p>
+      <ul class="extra-list reveal-list">
+        <li class="reveal-item">Verifica a idade mínima de cada livro.</li>
+        <li class="reveal-item">Marca o livro como indisponível enquanto está emprestado.</li>
+        <li class="reveal-item">Define 20 dias de prazo.</li>
+        <li class="reveal-item">Permite uma única renovação, e só para empréstimos que não estão em atraso.</li>
+        <li class="reveal-item">Calcula multa de R$ 1,00 por dia de atraso.</li>
+        <li class="reveal-item">Um índice único no banco impede dois empréstimos em aberto do mesmo livro. A devolução usa transação para manter os dados consistentes.</li>
+        <li class="reveal-item">Os e-mails (senha provisória, senha de empréstimo e recuperação de senha) são enviados pela API do Brevo.</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section id="habilidades" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Habilidades demonstradas</h2>
+    <div class="reveal-block"><ul class="extra-list reveal-list">
+      <li class="reveal-item">Desenvolvimento full stack com Ruby on Rails (MVC, rotas, models, controllers, views).</li>
+      <li class="reveal-item">Modelagem relacional em PostgreSQL, com migrations, chaves estrangeiras e índices.</li>
+      <li class="reveal-item">Autenticação com dois perfis e fluxo de primeiro acesso.</li>
+      <li class="reveal-item">Regras de negócio e validações.</li>
+      <li class="reveal-item">Integração com API externa de e-mail.</li>
+      <li class="reveal-item">Segurança com Brakeman, bundler-audit e variáveis de ambiente.</li>
+      <li class="reveal-item">Testes automatizados e CI com GitHub Actions (RuboCop, testes e testes de sistema).</li>
+      <li class="reveal-item">Dependabot, Docker e deploy em nuvem.</li>
+    </ul></div>
+  </div></section>
+
+  <section class="section"><div class="container proj-back"><a href="../index.html#projects" class="btn-primary"><span>Voltar aos projetos</span></a></div></section>
+  <footer class="footer"><div class="container"><p>© 2026 Isaac Rodrigues de Medeiros. Todos os direitos reservados.</p><p class="footer-credit">Desenvolvido com ❤️ e animações GSAP</p></div></footer>
+
+  <script src="../vendor/gsap.min.js"></script>
+  <script>window.gsap || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollTrigger.min.js"></script>
+  <script>window.ScrollTrigger || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollToPlugin.min.js"></script>
+  <script>window.ScrollToPlugin || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"><\/script>');</script>
+  <script src="../projeto.js"></script>
+</body>
+</html>

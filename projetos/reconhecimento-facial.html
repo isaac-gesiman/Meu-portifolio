@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconhecimento de Movimentos Faciais | Isaac Gesiman</title>
+  <meta name="description" content="Detecção em tempo real da abertura dos olhos e da boca com OpenCV e MediaPipe.">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <noscript><style>.reveal-block,.reveal-text,.reveal-item,.section-title{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <nav class="navbar"><div class="container"><a class="logo" href="../index.html"><span class="logo-text">IG</span></a><ul class="nav-links"><li><a href="../index.html#home">Início</a></li><li><a href="../index.html#about">Sobre</a></li><li><a href="../index.html#projects">Projetos</a></li><li><a href="../index.html#skills">Habilidades</a></li><li><a href="../index.html#contact">Contato</a></li></ul></div></nav>
+
+  <header class="hero section proj-hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
+    <h1 id="proj-title">Reconhecimento de Movimentos Faciais</h1>
+    <p class="subtitle proj-fade">A webcam detecta quando os olhos e a boca abrem e fecham.</p>
+    <div class="project-tech proj-fade"><span>Python</span><span>OpenCV</span><span>MediaPipe</span><span>Visão Computacional</span></div>
+    <div class="proj-actions proj-fade"><a href="#objetivo" class="btn-primary"><span>Ler sobre o projeto</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a href="https://github.com/isaac-gesiman/projeto-para-reconhecer-o-movimento-dos-olhos-e-boca" target="_blank" rel="noopener" class="btn-secondary">Ver no GitHub</a></div>
+  </div></div></header>
+
+  <section id="objetivo" class="section proj-section"><div class="container">
+    <h2 class="section-title">Objetivo</h2>
+    <div class="reveal-block"><p class="reveal-text">Detectar em tempo real, pela webcam, se os olhos e a boca estão abertos ou fechados, aplicando técnicas de processamento de imagem e visão computacional.</p></div>
+  </div></section>
+
+  <section id="sobre-projeto" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Sobre</h2>
+    <div class="reveal-block"><p class="reveal-text">Trabalho de Computação Gráfica em Python, nascido da curiosidade sobre como jogos como o Roblox capturam as expressões do rosto para animar avatares. Usa OpenCV, MediaPipe, NumPy, Matplotlib, Pillow e scikit-image.</p></div>
+  </div></section>
+
+  <section id="como-funciona" class="section proj-section"><div class="container">
+    <h2 class="section-title">Como funciona</h2>
+    <div class="reveal-block">
+      <p class="reveal-text">O programa captura o vídeo da webcam e passa cada quadro por um pipeline:</p>
+      <ol class="steps reveal-list">
+        <li class="reveal-item">Converte para cinza e normaliza a imagem.</li>
+        <li class="reveal-item">Calcula o histograma.</li>
+        <li class="reveal-item">Aplica três filtros de suavização (Gaussiano, mediana e bilateral).</li>
+        <li class="reveal-item">Detecta bordas com Canny.</li>
+        <li class="reveal-item">Segmenta com limiar de Otsu, seguido de erosão e dilatação.</li>
+        <li class="reveal-item">Extrai métricas, como área segmentada e número de contornos.</li>
+      </ol>
+      <p class="reveal-text">Em paralelo, o MediaPipe Face Landmarker mapeia os pontos do rosto. O código mede a distância euclidiana entre as pálpebras superior e inferior e entre os lábios, e compara com limiares (5 para os olhos e 9 para a boca). Tudo aparece num painel 2×3 com cada etapa e o estado atual do rosto. Ao fechar, o programa salva as imagens e um relatório em Matplotlib.</p>
+    </div>
+  </div></section>
+
+  <section id="habilidades" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Habilidades demonstradas</h2>
+    <div class="reveal-block"><ul class="extra-list reveal-list">
+      <li class="reveal-item">Python aplicado a visão computacional.</li>
+      <li class="reveal-item">OpenCV e processamento digital de imagens (filtros, bordas, segmentação, morfologia).</li>
+      <li class="reveal-item">Uso de modelos de IA prontos (MediaPipe).</li>
+      <li class="reveal-item">Matemática aplicada (distância euclidiana e limiares).</li>
+      <li class="reveal-item">Processamento de vídeo em tempo real, organização do código em funções e geração de relatórios visuais.</li>
+    </ul></div>
+  </div></section>
+
+  <section class="section"><div class="container proj-back"><a href="../index.html#projects" class="btn-primary"><span>Voltar aos projetos</span></a></div></section>
+  <footer class="footer"><div class="container"><p>© 2026 Isaac Rodrigues de Medeiros. Todos os direitos reservados.</p><p class="footer-credit">Desenvolvido com ❤️ e animações GSAP</p></div></footer>
+
+  <script src="../vendor/gsap.min.js"></script>
+  <script>window.gsap || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollTrigger.min.js"></script>
+  <script>window.ScrollTrigger || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollToPlugin.min.js"></script>
+  <script>window.ScrollToPlugin || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"><\/script>');</script>
+  <script src="../projeto.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abrir 100 Abas com 1 Link | Isaac Gesiman</title>
+  <meta name="description" content="Abra o mesmo link em até 100 janelas lado a lado com um único clique.">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <noscript><style>.reveal-block,.reveal-text,.reveal-item,.section-title{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <nav class="navbar"><div class="container"><a class="logo" href="../index.html"><span class="logo-text">IG</span></a><ul class="nav-links"><li><a href="../index.html#home">Início</a></li><li><a href="../index.html#about">Sobre</a></li><li><a href="../index.html#projects">Projetos</a></li><li><a href="../index.html#skills">Habilidades</a></li><li><a href="../index.html#contact">Contato</a></li></ul></div></nav>
+
+  <header class="hero section proj-hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
+    <h1 id="proj-title">Abrir 100 Abas com 1 Link</h1>
+    <p class="subtitle proj-fade">Um link, até 100 janelas lado a lado.</p>
+    <div class="project-tech proj-fade"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+    <div class="proj-actions proj-fade"><a href="#objetivo" class="btn-primary"><span>Ler sobre o projeto</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a href="https://github.com/isaac-gesiman/Abrir-em-ate-100-abas-com-1-link" target="_blank" rel="noopener" class="btn-secondary">Ver no GitHub</a></div>
+  </div></div></header>
+
+  <section id="objetivo" class="section proj-section"><div class="container">
+    <h2 class="section-title">Objetivo</h2>
+    <div class="reveal-block"><p class="reveal-text">Abrir o mesmo link em até 100 janelas ao mesmo tempo, lado a lado, para comparar, monitorar ou testar.</p></div>
+  </div></section>
+
+  <section id="sobre-projeto" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Sobre</h2>
+    <div class="reveal-block"><p class="reveal-text">Ferramenta de página única, feita com HTML, CSS e JavaScript puro, sem frameworks nem build. Funciona abrindo o index.html no navegador.</p></div>
+  </div></section>
+
+  <section id="como-funciona" class="section proj-section"><div class="container">
+    <h2 class="section-title">Como funciona</h2>
+    <div class="reveal-block">
+      <p class="reveal-text">O usuário cola o link e escolhe a quantidade (de 1 a 100). O código valida e normaliza a URL, aceitando apenas http e https. Links do YouTube e do TikTok são convertidos automaticamente para a versão de incorporação. A página então monta a quantidade pedida de iframes em um grid responsivo, com 9, 6, 4 ou 2 colunas conforme a tela. Os iframes rodam em modo sandbox, com permissões controladas. Se o site bloquear a exibição em iframe, o botão “Abrir em abas” abre cada cópia numa aba separada. A interface tem modo escuro automático e funciona em celular.</p>
+    </div>
+  </div></section>
+
+  <section id="habilidades" class="section section-alt proj-section"><div class="container">
+    <h2 class="section-title">Habilidades demonstradas</h2>
+    <div class="reveal-block"><ul class="extra-list reveal-list">
+      <li class="reveal-item">JavaScript puro com manipulação do DOM e validação de entrada.</li>
+      <li class="reveal-item">CSS Grid responsivo, variáveis CSS, animações e dark mode.</li>
+      <li class="reveal-item">Noções de segurança web (sandbox de iframes, noopener, filtro de protocolos).</li>
+      <li class="reveal-item">Uso de embeds e capacidade de transformar uma necessidade pessoal em ferramenta.</li>
+    </ul></div>
+  </div></section>
+
+  <section class="section"><div class="container proj-back"><a href="../index.html#projects" class="btn-primary"><span>Voltar aos projetos</span></a></div></section>
+  <footer class="footer"><div class="container"><p>© 2026 Isaac Rodrigues de Medeiros. Todos os direitos reservados.</p><p class="footer-credit">Desenvolvido com ❤️ e animações GSAP</p></div></footer>
+
+  <script src="../vendor/gsap.min.js"></script>
+  <script>window.gsap || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollTrigger.min.js"></script>
+  <script>window.ScrollTrigger || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"><\/script>');</script>
+  <script src="../vendor/ScrollToPlugin.min.js"></script>
+  <script>window.ScrollToPlugin || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"><\/script>');</script>
+  <script src="../projeto.js"></script>
+</body>
+</html>

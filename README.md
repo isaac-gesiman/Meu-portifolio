@@ -110,7 +110,7 @@ O layout se adapta a computadores, tablets e celulares. Os textos das páginas d
 **Isaac Rodrigues de Medeiros** (Isaac Gesiman) — Mossoró, RN.
 
 - GitHub: [isaac-gesiman](https://github.com/isaac-gesiman)
-- E-mail: [isaac.gesiman@email.com](mailto:isaac.gesiman@email.com)
+- E-mail: [isaac.rodmed@gmail.com](mailto:isaac.rodmed@gmail.com)
 - Telefone: (84) 99708-4078
 
 © 2026 Isaac Rodrigues de Medeiros. Todos os direitos reservados.
